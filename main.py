@@ -16,7 +16,7 @@ app = Flask(__name__)
 csrf = CSRFProtect(app)
 bcrypt = Bcrypt(app)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://perry:grubasek1@127.0.0.1:3306/patient_doctor_appointment"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://perry:<password>@127.0.0.1:3306/patient_doctor_appointment"
 db = SQLAlchemy(app)
 
 app.config["SECRET_KEY"] = "grubasek1"

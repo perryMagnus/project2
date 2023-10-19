@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block body %}
+<div style="display: flex; justify-content: center;">
+    <form method="POST" action="/patient_view/doctors">
+        {{ form.csrf_token }}
+
+        {{ form.spec.label }}{{ form.spec }}
+
+        {{ form.submit }}
+    </form>
+    <div style="display: flex; justify-content: center;">
+        {% for d in doctor %}
+            {% if d.verified == True %}
+                <h3>First and last name: {{ d.fname }}, {{ d.lname }}<br>
+                Email and phone number: {{ d.email }}, {{ d.phone_number }}<br>
+                Specialization: {{ d.specialization }}<br>
+                Working hours: {{ d.working_hours }}<br></h3>
+                <form method="POST" action="/patient_view/patient_{{ current_user.id }}_doctor_{{ d.id }}_schedule_an_appointment">
+                    {{ form.csrf_token }}
+
+                    {{ form.contact}}
+                </form>
+
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block body %}
+<div style="display: flex; justify-content: center;">
+    <form method="POST" action="/patient_view/patient_{{ current_user.id }}_appointments">
+        {{ form.csrf_token }}
+
+        {{ form.appointments }}
+    </form>
+    <form method="POST" action="/patient_view/doctors">
+        {{ form.csrf_token }}
+
+        {{ form.doctors_list}}
+    </form>
+    <form method="POST" action="/login">
+        {{ form.csrf_token}}
+
+        {{ form.logout }}
+    </form>
+
+</div>
+{% endblock %}

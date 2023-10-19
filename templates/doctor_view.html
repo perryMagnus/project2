@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block body %}
+<div style="display: flex; justify-content: center;">
+    <h1>Your schedule</h1>
+    {% if appointment %}
+        {% for a in appointment %}
+            <h3>{{ a.date }}, {{ a.hour }}</h3>
+            <h3>{{ a.patient.fname }}, {{ a.patient.lname }}</h3>
+            <h3>{{ a.patient.phone_number }}, {{ a.patient.email }}<br></h3>
+        {% endfor %}
+    {% endif %}
+
+</div>
+{% endblock %}

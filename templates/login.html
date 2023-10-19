@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block body %}
+<div style="display: flex; justify-content: center;">
+    <form method="POST" action="/register_patient">
+        {{ form.csrf_token }}
+
+        {{ form.register_patient }}
+    </form>
+    <form method="POST" action="/register_doctor">
+        {{ form.csrf_token }}
+
+        {{ form.register_doctor }}
+    </form>
+    <form method="POST" action="/login">
+        {{ form.csrf_token }}
+
+        {{ form.role.label }}{{ form.role }}
+        {{ form.username.label }}{{ form.username }}
+        {{ form.password.label }}{{ form.password }}
+
+        {{ form.remember_me.label }}{{ form.remember_me }}
+
+        {{ form.submit }}
+    </form>
+</div>
+{% endblock %}

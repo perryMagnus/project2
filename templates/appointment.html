@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block body %}
+<div style="display: flex; justify-content: center;">
+    <h1>Appointment</h1>
+    <form method="POST">
+        {{ form.csrf_token }}
+
+        {{ form.appointment.label }}{{ form.appointment }}
+
+        {{ form.submit }}
+    </form>
+</div>
+{% endblock %}

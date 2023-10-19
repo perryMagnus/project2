@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block body %}
+<div style="display: flex; justify-content: center;">
+    {% if appointment %}
+        {% for a in appointment %}
+            <h3>Doctor: {{ a.doctor.fname }}, {{ a.doctor.lname }}</h3>
+            <h3>Contact: {{ a.doctor.email }}, {{ a.doctor.phone_number}}</h3>
+            <h3>Date: {{ a.date }}, {{ a.hour }}</h3>
+
+            <form method="POST" action="/patient_view/patient_{{ current_user.id }}_delete_appointment{{ a.id }}">
+                {{ form.csrf_token }}
+
+                {{ form.delete_appointment }}
+            </form>
+            <form method="POST" action="/patient_view/patient_{{ current_user.id }}_update_appointment{{ a.id }}_doctor{{ a.doctor.id}}">
+                {{ form.csrf_token }}
+
+                {{ form.update_appointment}}
+            </form>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

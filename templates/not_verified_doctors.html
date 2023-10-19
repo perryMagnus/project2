@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block body %}
+<div style="display: flex; justify-content: center;">
+    <h1>Not verified doctors</h1>
+    {% for d in doctor %}
+        {% if d.verified != True %}
+            <h3>First and last name: {{ d.fname }}, {{ d.lname }}</h3>
+            <h3>Email and phone number: {{ d.email }}, {{ d.phone_number }}</h3>
+            <h3>Specialization: {{ d.specialization }}</h3>
+            <h3>Dyploma:</h3><img src="data:image/jpeg;base64,{{ d.dyploma }}" alt="Image">
+            <h3>Personal ID:</h3><img src="data:image/jpeg;base64,{{ d.personal_ID }}" alt="Image">
+
+            <form method="POST" action="/admin_view/accept_{{ d.id }}">
+                {{ form.csrf_token }}
+
+                {{ form.verify }}
+            </form>
+            <form method="POST" action="/admin_view/reject_{{ d.id }}">
+                {{ form.csrf_token }}
+
+                {{ form.reject }}
+            </form>
+        {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}

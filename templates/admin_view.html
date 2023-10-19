@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block body %}
+<div>
+    <form method="POST" action="/admin_view_not_verified_doctors">
+        {{ form.csrf_token }}
+
+        {{ form.redirect_not_verified_doctors }}
+    </form>
+    <form method="POST" action="/admin_view/reported_users">
+        {{ form.csrf_token}}
+
+        {{ form.redirect_reported_users }}
+    </form>
+</div>
+{% endblock %}
